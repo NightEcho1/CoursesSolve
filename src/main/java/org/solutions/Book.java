@@ -2,19 +2,19 @@ package org.solutions;
 
 public class Book {
     private String name;
-    private int date;
+    private int id;
 
-    public Book(String name, int date) {
+    public Book(String name, int id) {
         this.name = name;
-        this.date = date;
+        this.id = id;
     }
 
     public String getName() {
         return name;
     }
 
-    public int getDate() {
-        return date;
+    public int getId() {
+        return id;
     }
 
     public boolean equals(Object compared) {
