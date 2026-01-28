@@ -8,11 +8,9 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        GradeStatistics gradeStatistics = new GradeStatistics();
-        Scanner scanner = new Scanner(System.in);
-        GradeStatisticsUI gradeStatisticsUI = new GradeStatisticsUI(gradeStatistics, scanner);
-
-        gradeStatisticsUI.start();
+       Scanner scanner = new Scanner(System.in);
+       Recipes recipes = new Recipes(scanner);
+       recipes.start();
     }
 
     public static int linearSearch(int[] array, int indexToSearch) {
