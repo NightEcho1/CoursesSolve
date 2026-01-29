@@ -1,19 +1,22 @@
 package org.solutions;
 
 
+/*
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
+import java.util.Collections;*/
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
        Scanner scanner = new Scanner(System.in);
-       Recipes recipes = new Recipes(scanner);
-       recipes.start();
+       BirdDatabase birdDatabase = new BirdDatabase();
+       BirdUI birdUI = new BirdUI(scanner, birdDatabase);
+
+       birdUI.start();
     }
 
-    public static int linearSearch(int[] array, int indexToSearch) {
+    /*public static int linearSearch(int[] array, int indexToSearch) {
         for (int i = 0; i <= array.length; i++) {
             if (array[i] == indexToSearch) {
                 return i;
@@ -23,7 +26,7 @@ public class Main {
         return -1;
     }
 
-    public static int binarySeach(int[] array, int indexToSeach) {
+    public static int binarySearch(int[] array, int indexToSearch) {
         System.out.println(Arrays.toString(array));
         Arrays.sort(array);
         System.out.println(Arrays.toString(array));
@@ -34,11 +37,11 @@ public class Main {
         while (left <= right) {
             int middle = left + (right - left) / 2;
 
-            if (array[middle] == indexToSeach) {
+            if (array[middle] == indexToSearch) {
                 return middle;
             }
 
-            if (array[middle] < indexToSeach) {
+            if (array[middle] < indexToSearch) {
                 left = middle + 1;
             } else {
                 right = middle - 1;
@@ -103,5 +106,5 @@ public class Main {
 
     public static void sortStrings(ArrayList<String> strings) {
         Collections.sort(strings);
-    }
+    }*/
 }
