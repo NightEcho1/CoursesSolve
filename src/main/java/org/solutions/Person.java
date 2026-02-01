@@ -2,20 +2,16 @@ package org.solutions;
 
 public class Person {
     private String name;
-    private Pet pet;
+    private String address;
 
-    public Person(String name, Pet pet) {
+    public Person(String name, String address) {
         this.name = name;
-        this.pet = pet;
+        this.address = address;
     }
-
-    public String getName() {
-        return name;
-    }
-
 
     @Override
     public String toString() {
-        return getName() + " has a friend called " + pet.getPetName() + "(" + pet.getBreed() + ")";
+        return this.name + "\n" + "   " + this.address;
     }
 }
+
