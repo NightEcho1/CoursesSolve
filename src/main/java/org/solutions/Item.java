@@ -1,5 +1,7 @@
 package org.solutions;
 
+import java.util.Objects;
+
 public class Item {
     private String name;
     private int weight;
@@ -7,6 +9,10 @@ public class Item {
     public Item(String name, int weight) {
         this.name = name;
         this.weight = weight;
+    }
+
+    public Item(String name) {
+        this(name, 0);
     }
 
     public String getName() {
@@ -20,5 +26,28 @@ public class Item {
     @Override
     public String toString() {
         return getName() + " (" + getWeight() + " kg)";
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Item other = (Item) obj;
+
+        if (!Objects.equals(this.name, other.name)) {
+            return false;
+        }
+        return true;
+    }
+    @Override
+    public int hashCode() {
+        return Objects.hash(name);
     }
 }
