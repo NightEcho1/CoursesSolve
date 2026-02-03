@@ -2,16 +2,25 @@ package org.solutions;
 
 
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 
 public class Main {
     public static void main(String[] args) {
-        MisplacingBox box = new MisplacingBox();
-        box.add(new Item("Saludo", 5));
-        box.add(new Item("Pirkka", 5));
+        Set<String> names = new HashSet<>();
+        names.add("first");
+        names.add("first");
+        names.add("second");
+        names.add("second");
+        names.add("second");
 
-        System.out.println(box.isInBox(new Item("Saludo")));
-        System.out.println(box.isInBox(new Item("Pirkka")));
+        System.out.println(returnSize(names));
     }
+    public static int returnSize(Set<String> set) {
+        return set.size();
+    }
+}
+
 
     /*public static int linearSearch(int[] array, int indexToSearch) {
         for (int i = 0; i <= array.length; i++) {
@@ -104,4 +113,3 @@ public class Main {
     public static void sortStrings(ArrayList<String> strings) {
         Collections.sort(strings);
     }*/
-}

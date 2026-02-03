@@ -1,33 +1,31 @@
 package org.solutions;
 
-public class Book {
-    private String name;
-    private int id;
+public class Book implements Packable {
+    private String authorName;
+    private String nameOfBook;
+    private double weight;
 
-    public Book(String name, int id) {
-        this.name = name;
-        this.id = id;
+    public Book(String author, String name, double weight) {
+        this.authorName = author;
+        this.nameOfBook = name;
+        this.weight = weight;
     }
 
-    public String getName() {
-        return name;
+    public String getAuthorName() {
+        return authorName;
     }
 
-    public int getId() {
-        return id;
+    public String getNameOfBook() {
+        return nameOfBook;
     }
 
-    public boolean equals(Object compared) {
-        if (this == compared) {
-            return true;
-        }
+    @Override
+    public String toString() {
+        return this.authorName + ": " + this.nameOfBook;
+    }
 
-        if (!(compared instanceof Book)) {
-            return false;
-        }
-
-        Book comparedBook = (Book) compared;
-
-        return this.name.equals(comparedBook.name);
+    @Override
+    public double weight() {
+        return this.weight;
     }
 }
