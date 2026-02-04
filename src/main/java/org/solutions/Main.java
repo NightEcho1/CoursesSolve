@@ -1,23 +1,17 @@
 package org.solutions;
 
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
-        Set<String> names = new HashSet<>();
-        names.add("first");
-        names.add("first");
-        names.add("second");
-        names.add("second");
-        names.add("second");
+        NoiseCapable dog = new Dog();
+        dog.makeNoise();
 
-        System.out.println(returnSize(names));
-    }
-    public static int returnSize(Set<String> set) {
-        return set.size();
+        NoiseCapable cat = new Cat("Garfield");
+        cat.makeNoise();
+        Cat c = (Cat) cat;
+        c.purr();
     }
 }
 
