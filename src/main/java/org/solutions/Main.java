@@ -1,17 +1,41 @@
 package org.solutions;
 
-
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        NoiseCapable dog = new Dog();
-        dog.makeNoise();
+       Scanner scanner = new Scanner(System.in);
+       List<String> inputs = new ArrayList<>();
 
-        NoiseCapable cat = new Cat("Garfield");
-        cat.makeNoise();
-        Cat c = (Cat) cat;
-        c.purr();
+       System.out.println("Input numbers, type \"end\" to stop.");
+       while (true) {
+           String row = scanner.nextLine();
+           if (row.equals("end")) {
+               System.out.println("Print the average of the negative numbers or the positive numbers? (n/p)");
+               String answer = scanner.nextLine();
+               if (answer.equals("p")) {
+                   double positiveAverage = inputs.stream()
+                           .mapToInt(s -> Integer.valueOf(s))
+                           .filter(number -> number >= 0)
+                           .average()
+                           .getAsDouble();
+                   System.out.println("Average of the positive numbers: " + positiveAverage);
+                   break;
+               } else if (answer.equals("n")) {
+                   double negativeAverage = inputs.stream()
+                           .mapToInt(s -> Integer.valueOf(s))
+                           .filter(number -> number < 0)
+                           .average()
+                           .getAsDouble();
+                   System.out.println("Average of the negative numbers: " + negativeAverage);
+                   break;
+               }
+           }
+
+           inputs.add(row);
+       }
     }
 }
 
