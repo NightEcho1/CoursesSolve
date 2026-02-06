@@ -3,41 +3,38 @@ package org.solutions;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
 public class Main {
     public static void main(String[] args) {
-       Scanner scanner = new Scanner(System.in);
-       List<String> inputs = new ArrayList<>();
+        ArrayList<Integer> numbers = new ArrayList<>();
+        Scanner scanner = new Scanner(System.in);
 
-       System.out.println("Input numbers, type \"end\" to stop.");
-       while (true) {
-           String row = scanner.nextLine();
-           if (row.equals("end")) {
-               System.out.println("Print the average of the negative numbers or the positive numbers? (n/p)");
-               String answer = scanner.nextLine();
-               if (answer.equals("p")) {
-                   double positiveAverage = inputs.stream()
-                           .mapToInt(s -> Integer.valueOf(s))
-                           .filter(number -> number >= 0)
-                           .average()
-                           .getAsDouble();
-                   System.out.println("Average of the positive numbers: " + positiveAverage);
-                   break;
-               } else if (answer.equals("n")) {
-                   double negativeAverage = inputs.stream()
-                           .mapToInt(s -> Integer.valueOf(s))
-                           .filter(number -> number < 0)
-                           .average()
-                           .getAsDouble();
-                   System.out.println("Average of the negative numbers: " + negativeAverage);
-                   break;
-               }
-           }
+        while (true) {
+            String row = scanner.nextLine();
+            if (Integer.parseInt(row) < 0) {
+                numbers.stream()
+                        .filter(number -> number >= 1 && number <= 5)
+                        .forEach(number -> System.out.println(number));
+                break;
+            }
+            numbers.add(Integer.valueOf(row));
+        }
+    }
 
-           inputs.add(row);
-       }
+    public static List<Integer> positive(List<Integer> numbers) {
+        return numbers.stream()
+                .filter(number -> number > 0)
+                .collect(Collectors.toList());
+    }
+
+    public static ArrayList<Integer> divisible(ArrayList<Integer> numbers) {
+        return numbers.stream()
+                .filter(number -> number % 2 == 0 || number % 3 == 0 || number % 5 == 0)
+                .collect(Collectors.toCollection(ArrayList::new));
     }
 }
+
 
 
     /*public static int linearSearch(int[] array, int indexToSearch) {
