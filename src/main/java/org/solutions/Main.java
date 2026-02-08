@@ -1,5 +1,7 @@
 package org.solutions;
 
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -7,19 +9,12 @@ import java.util.stream.Collectors;
 
 public class Main {
     public static void main(String[] args) {
-        ArrayList<Integer> numbers = new ArrayList<>();
         Scanner scanner = new Scanner(System.in);
+        // test the method here
+        String fileToRead = scanner.nextLine();
+        List<String> file = read(fileToRead);
+        System.out.println(file);
 
-        while (true) {
-            String row = scanner.nextLine();
-            if (Integer.parseInt(row) < 0) {
-                numbers.stream()
-                        .filter(number -> number >= 1 && number <= 5)
-                        .forEach(number -> System.out.println(number));
-                break;
-            }
-            numbers.add(Integer.valueOf(row));
-        }
     }
 
     public static List<Integer> positive(List<Integer> numbers) {
@@ -32,6 +27,18 @@ public class Main {
         return numbers.stream()
                 .filter(number -> number % 2 == 0 || number % 3 == 0 || number % 5 == 0)
                 .collect(Collectors.toCollection(ArrayList::new));
+    }
+
+    public static List<String> read(String file) {
+        List<String> rows = new ArrayList<>();
+
+        try {
+            Files.lines(Paths.get(file)).forEach(row -> rows.add(row));
+        } catch (Exception fileErrorMessage) {
+            System.out.println("Error: " + fileErrorMessage.getMessage());
+        }
+
+        return rows;
     }
 }
 
